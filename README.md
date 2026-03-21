@@ -1,238 +1,128 @@
-# favehotel S. Parman Medan — Panduan Kustomisasi
+# favehotel S. Parman Medan — Landing Page
 
-## 📁 Struktur File
+Landing page profil perusahaan untuk **favehotel S. Parman Medan**, sebuah hotel berbintang yang berlokasi di Jalan S. Parman, Kota Medan, Sumatera Utara. Proyek ini dibangun menggunakan HTML, CSS, dan JavaScript murni tanpa framework, dengan pendekatan desain minimalis modern menggunakan teori warna **60-30-10** (Biru · Hitam · Putih).
+
+---
+
+## Tentang Proyek
+
+Website ini merupakan halaman profil digital favehotel S. Parman Medan yang menampilkan identitas hotel, fasilitas unggulan, pilihan kamar, galeri visual, serta sistem reservasi kamar yang terhubung dengan payment gateway **Midtrans**. Seluruh tampilan dibangun dari nol tanpa library UI eksternal, mempertahankan performa yang ringan namun tetap kaya interaksi.
+
+Desain mengadopsi estetika hotel premium dengan palet warna dominan biru navy yang dalam, dipadukan hitam pekat dan sentuhan putih sebagai kontras, menciptakan kesan elegan sekaligus profesional.
+
+---
+
+## Fitur
+
+**Tampilan & Navigasi**
+- Navbar transparan yang berubah solid saat scroll, dengan auto-hide saat scroll ke bawah dan muncul kembali saat scroll ke atas
+- Hero section fullscreen dengan foto latar belakang, efek parallax, dan animasi partikel berbasis Canvas API
+- Animasi masuk elemen saat scroll (Animate on Scroll) yang diimplementasikan sendiri tanpa library
+- Responsive penuh untuk desktop, tablet, dan mobile — termasuk hamburger menu dengan overlay
+
+**Konten Hotel**
+- Seksi profil hotel dengan lencana tahun berdiri dan chip fitur unggulan
+- Tiga pilihan kamar (Standar, Deluxe, Suite) dengan efek tilt 3D saat hover di desktop
+- Enam kartu fasilitas hotel dengan efek gradient hover
+- Galeri foto horizontal scrollable dengan overlay judul dan deskripsi per foto saat hover, plus lightbox fullscreen saat klik
+
+**Interaksi**
+- Slider testimoni tamu dengan auto-rotate, navigasi manual, dan swipe gesture di mobile
+- Counter angka statistik dengan animasi increment saat pertama kali terlihat di layar
+- Tombol back-to-top yang muncul setelah scroll melampaui batas tertentu
+- Toast notification untuk feedback aksi pengguna
+- Highlight navigasi aktif sesuai posisi scroll halaman
+
+**Sistem Reservasi & Pembayaran**
+- Formulir booking dengan validasi input, batas tanggal otomatis, dan logika check-out tidak boleh sebelum check-in
+- Modal pembayaran yang muncul setelah form terisi lengkap, menampilkan ringkasan pesanan dengan kalkulasi total otomatis berdasarkan durasi menginap
+- Integrasi **Midtrans Snap** dengan dukungan empat metode: Snap all-in-one, GoPay, BCA Virtual Account, dan QRIS
+- Callback handler untuk status `success`, `pending`, `error`, dan `close`
+- Mode demo bawaan untuk keperluan pengembangan tanpa memerlukan backend
+
+**Aksesibilitas**
+- Dukungan navigasi keyboard penuh dengan indikator fokus yang jelas
+- Atribut ARIA pada elemen interaktif (dialog, tombol, iframe peta)
+- Respek terhadap preferensi `prefers-reduced-motion` untuk pengguna yang sensitif terhadap animasi
+
+---
+
+## Struktur Proyek
+
 ```
 favehotel-landing/
-├── index.html       ← Struktur halaman utama
-├── style.css        ← Semua gaya & tampilan
-├── script.js        ← Interaktivitas, animasi & pembayaran
-└── README.md        ← Panduan ini
+├── index.html      — Markup HTML seluruh halaman
+├── style.css       — Seluruh gaya, variabel warna, dan layout responsif
+├── script.js       — Logika interaksi, animasi, dan integrasi pembayaran
+└── README.md       — Dokumentasi proyek ini
 ```
+
+Seluruh aset gambar (foto hero, kamar, galeri, logo) disimpan terpisah dan direferensikan melalui atribut `src` di `index.html`. Tidak ada dependensi npm atau proses build yang dibutuhkan — cukup buka `index.html` langsung di browser.
 
 ---
 
-## 🆕 Perubahan Terbaru
-- ✅ Custom cursor dihapus → kembali ke cursor default browser
-- ✅ Galeri kini menampilkan **judul + deskripsi** saat foto di-hover
-- ✅ Integrasi **Midtrans Payment Gateway** (Snap, GoPay, BCA VA, QRIS)
+## Teknologi
 
----
-
-## 💳 Setup Midtrans (WAJIB untuk pembayaran aktif)
-
-### Langkah 1 — Daftar & Ambil API Key
-1. Daftar di [https://dashboard.midtrans.com](https://dashboard.midtrans.com)
-2. Masuk → **Settings → Access Keys**
-3. Salin **Client Key** (diawali `Mid-client-...`)
-4. Salin **Server Key** (diawali `Mid-server-...`) → **hanya untuk backend**
-
-### Langkah 2 — Pasang Client Key di `index.html`
-Cari baris ini di bagian bawah `index.html`:
-```html
-<script
-  src="https://app.sandbox.midtrans.com/snap/snap.js"
-  data-client-key="YOUR_MIDTRANS_CLIENT_KEY">
-</script>
-```
-→ Ganti `YOUR_MIDTRANS_CLIENT_KEY` dengan Client Key Anda.
-
-**Sandbox (testing):** gunakan URL `https://app.sandbox.midtrans.com/snap/snap.js`  
-**Production (live):** ganti ke `https://app.midtrans.com/snap/snap.js`
-
-### Langkah 3 — Pasang Client Key di `script.js`
-```js
-const MIDTRANS_CONFIG = {
-  clientKey: 'Mid-client-XXXXXXXXXXXXXXXX',  // ← ganti ini
-  roomPrices: { ... }
-};
-```
-
-### Langkah 4 — Setup Backend (Node.js / PHP)
-**PENTING:** Server Key TIDAK BOLEH ada di frontend. Buat endpoint di backend:
-
-```js
-// Contoh Node.js + Express
-const midtransClient = require('midtrans-client');
-const snap = new midtransClient.Snap({
-  isProduction: false,   // true untuk production
-  serverKey: 'Mid-server-XXXXXXXX',
-});
-
-app.post('/api/create-transaction', async (req, res) => {
-  const { orderId, grossAmount, customerDetails, itemDetails } = req.body;
-  const parameter = {
-    transaction_details: { order_id: orderId, gross_amount: grossAmount },
-    customer_details: customerDetails,
-    item_details: itemDetails,
-  };
-  const transaction = await snap.createTransaction(parameter);
-  res.json({ token: transaction.token, orderId });
-});
-```
-
-### Langkah 5 — Aktifkan backend di `script.js`
-Cari bagian `processPayment()`, **uncomment** blok backend dan **hapus** `runDemoPayment()`:
-```js
-// Uncomment ini:
-const response = await fetch('/api/create-transaction', { ... });
-const { token } = await response.json();
-launchMidtransSnap(token);
-
-// Hapus/comment ini:
-// runDemoPayment();
-```
-
-### Metode Pembayaran yang Tersedia
-| Metode | Keterangan |
+| Lapisan | Teknologi |
 |---|---|
-| Midtrans Snap | Semua metode (kartu kredit, VA, e-wallet) dalam 1 popup |
-| GoPay | Dompet digital via QR |
-| BCA Virtual Account | Transfer bank BCA |
-| QRIS | Scan QR dari semua e-wallet |
+| Markup | HTML5 Semantic |
+| Styling | CSS3 — Custom Properties, Grid, Flexbox, Animasi |
+| Skrip | Vanilla JavaScript (ES6+) |
+| Font | Google Fonts — Lexend & Cormorant Garamond |
+| Pembayaran | Midtrans Snap JS |
+| Peta | Google Maps Embed API |
 
 ---
 
-## 🖼️ Mengganti Foto & Logo
+## Skema Warna
 
-### Logo Perusahaan
-```html
-<img src="logo.png" alt="favehotel Logo" class="nav-logo-img" />
-```
-→ Ganti `logo.png` dengan file logo Anda (PNG transparan, tinggi ±80px).
+Proyek ini menerapkan teori warna **60-30-10** secara konsisten di seluruh antarmuka:
 
-### Foto Latar Belakang Hero
-```html
-<img src="hero-bg.jpg" ... />
-```
-→ Disarankan ukuran 1920×1080px.
+| Peran | Warna | Hex |
+|---|---|---|
+| 60% — Dominan | Biru Navy | `#0A1628` |
+| 30% — Sekunder | Hitam Pekat | `#080C14` |
+| 10% — Aksen | Putih | `#FFFFFF` |
+| Interaktif | Biru Cerah | `#1E5BCC` |
 
-### Foto Kamar
-```
-room-standard.jpg  ← Kamar Standar
-room-deluxe.jpg    ← Kamar Deluxe
-room-suite.jpg     ← Kamar Suite
-```
-
-### Foto Galeri (bisa ubah nama & deskripsi)
-Di `index.html`, setiap item galeri memiliki:
-```html
-<div class="gallery-item">
-  <img src="gallery-1.jpg" alt="Lobby Hotel" />
-  <div class="gallery-overlay">
-    <div class="gallery-overlay-title">Lobby Utama</div>       ← Ubah judul
-    <div class="gallery-overlay-desc">Deskripsi foto...</div>  ← Ubah deskripsi
-  </div>
-</div>
-```
+Semua nilai warna tersimpan sebagai CSS Custom Properties di blok `:root` pada `style.css`, sehingga dapat dimodifikasi dari satu tempat tanpa menyentuh markup atau skrip.
 
 ---
 
-## 🎨 Mengubah Warna
-Di `style.css` bagian `:root`:
-```css
---blue-deep:    #0A1628;   /* Latar utama (60%) */
---blue-bright:  #1E5BCC;   /* Aksen interaktif */
---black-rich:   #080C14;   /* Section gelap (30%) */
---white:        #FFFFFF;   /* Teks terang (10%) */
-```
+## Pembayaran — Midtrans
+
+Sistem pembayaran menggunakan **Midtrans Snap**, payment gateway terkemuka di Indonesia yang mendukung puluhan metode pembayaran lokal. Alur kerjanya:
+
+1. Tamu mengisi formulir reservasi dan memilih tipe kamar
+2. Submit membuka modal pembayaran dengan ringkasan pesanan
+3. Tamu memilih metode bayar dan mengklik tombol bayar
+4. Frontend memanggil endpoint backend untuk mendapatkan `snap_token`
+5. Midtrans Snap popup tampil dan memproses pembayaran
+6. Hasil transaksi ditangkap melalui callback dan ditampilkan kepada tamu
+
+Secara default proyek berjalan dalam **mode demo** yang mensimulasikan alur pembayaran tanpa koneksi ke server nyata. Untuk produksi, diperlukan backend (Node.js, PHP, Python, atau lainnya) yang menggunakan Server Key Midtrans untuk membuat transaksi secara aman.
 
 ---
 
-## 📝 Mengubah Harga Kamar
-Di `script.js`, bagian `MIDTRANS_CONFIG`:
-```js
-roomPrices: {
-  'Kamar Standar': 350000,   // ← ubah sesuai harga aktual
-  'Kamar Deluxe':  550000,
-  'Kamar Suite':   850000,
-}
-```
+## Pratinjau Halaman
 
----
-
-## 🚀 Cara Menggunakan
-1. Taruh semua file dalam satu folder
-2. Tambahkan file gambar sesuai nama
-3. Pasang Client Key Midtrans (lihat bagian Setup di atas)
-4. Buka `index.html` di browser atau upload ke hosting
-
----
-
-© 2025 favehotel S. Parman Medan
-
-
----
-
-## 💳 Integrasi Midtrans
-
-### Langkah 1 — Daftar & Dapatkan API Key
-1. Daftar di [dashboard.midtrans.com](https://dashboard.midtrans.com)
-2. Masuk ke **Settings → Access Keys**
-3. Salin **Client Key** (untuk frontend) dan **Server Key** (untuk backend)
-
-### Langkah 2 — Pasang Client Key di index.html
-Cari tag script Midtrans dan ganti `YOUR_MIDTRANS_CLIENT_KEY`:
-```html
-<script
-  src="https://app.sandbox.midtrans.com/snap/snap.js"
-  data-client-key="Mid-client-XXXXXXXXXXXXX">
-</script>
-```
-Untuk **production** (bukan sandbox), ganti URL menjadi:
-```
-https://app.midtrans.com/snap/snap.js
-```
-
-### Langkah 3 — Update Client Key di script.js
-```js
-const MIDTRANS_CONFIG = {
-  clientKey: 'Mid-client-XXXXXXXXXXXXX', // ← ganti ini
-  roomPrices: { ... }
-};
-```
-
-### Langkah 4 — Buat Backend (WAJIB untuk production)
-Server Key **tidak boleh** ada di frontend. Buat endpoint backend:
-
-**Contoh Node.js + Express:**
-```js
-const midtransClient = require('midtrans-client');
-
-const snap = new midtransClient.Snap({
-  isProduction: false, // true untuk production
-  serverKey: 'YOUR_SERVER_KEY',
-  clientKey: 'YOUR_CLIENT_KEY',
-});
-
-app.post('/api/create-transaction', async (req, res) => {
-  const { orderId, grossAmount, customerDetails, itemDetails } = req.body;
-  
-  const parameter = {
-    transaction_details: { order_id: orderId, gross_amount: grossAmount },
-    customer_details: customerDetails,
-    item_details: itemDetails,
-  };
-
-  const transaction = await snap.createTransaction(parameter);
-  res.json({ token: transaction.token, orderId });
-});
-```
-
-### Langkah 5 — Aktifkan Backend di script.js
-Di fungsi `processPayment()`, uncomment blok `// ── CARA PAKAI BACKEND NYATA ──` dan hapus panggilan `runDemoPayment()`.
-
-### Mode Demo vs Production
-
-| Mode | Keterangan |
+| Seksi | Deskripsi |
 |---|---|
-| **Demo** (default) | Tidak butuh backend, hanya simulasi tampilan |
-| **Sandbox** | Gunakan kredensial sandbox Midtrans, transaksi tidak nyata |
-| **Production** | Gunakan kredensial production, transaksi nyata |
+| **Hero** | Fullscreen dengan foto hotel, tagline, tombol CTA, dan statistik |
+| **Tentang** | Profil singkat hotel dengan foto dan chip fitur unggulan |
+| **Kamar** | Tiga tipe kamar dengan harga, fasilitas, dan tombol pesan |
+| **Fasilitas** | Enam layanan hotel dalam grid kartu interaktif |
+| **Galeri** | Slider foto horizontal dengan deskripsi per gambar dan lightbox |
+| **Testimoni** | Ulasan tamu dalam slider otomatis dengan swipe support |
+| **Reservasi** | Form booking terintegrasi modal pembayaran Midtrans |
+| **Kontak** | Informasi lokasi, telepon, email, sosial media, dan peta embed |
 
-### Metode Pembayaran yang Didukung Midtrans
-- Kartu Kredit/Debit (Visa, Mastercard, JCB)
-- GoPay, OVO, Dana, ShopeePay
-- Bank Transfer (BCA, BNI, BRI, Mandiri, Permata)
-- QRIS
-- Alfamart / Indomaret
-- Akulaku / Kredivo
+---
+
+## Lisensi
+
+Proyek ini dibuat untuk keperluan **favehotel S. Parman Medan**. Seluruh konten, nama merek, dan materi visual adalah milik PT Grahareksa Selaras / favehotel Group.
+
+---
+
+*Dibuat dengan HTML, CSS, dan JavaScript — tanpa framework, tanpa dependensi.*
