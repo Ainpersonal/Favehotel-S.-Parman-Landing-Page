@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>favehotel S. Parman Medan</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+
+  <!-- ===== LOADER ===== -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">fave</div>
+      <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+      <div class="loader-text">Medan · S. Parman</div>
+    </div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <!-- LOGO: Ganti src dengan path logo Anda -->
+      <img src="src/logo.png" alt="favehotel Logo" class="nav-logo-img" id="logoImg"
+           onerror="this.style.display='none'; document.getElementById('logoText').style.display='flex';" />
+      <span class="nav-logo-text" id="logoText" style="display:none;">
+        <span class="logo-fave">fave</span><span class="logo-hotel">hotel</span>
+      </span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" class="nav-link">Tentang</a></li>
+      <li><a href="#rooms" class="nav-link">Kamar</a></li>
+      <li><a href="#facilities" class="nav-link">Fasilitas</a></li>
+      <li><a href="#gallery" class="nav-link">Galeri</a></li>
+      <li><a href="#contact" class="nav-link">Kontak</a></li>
+    </ul>
+    <a href="#booking" class="nav-cta">Pesan Sekarang</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <!-- HERO BG: Ganti src dengan foto latar belakang Anda -->
+    <div class="hero-bg" id="heroBg">
+      <img src="src/latar_belakang.jpg" alt="Hotel Background" class="hero-bg-img" id="heroBgImg"
+           onerror="this.style.display='none';" />
+      <div class="hero-bg-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow" data-aos="fade-up" data-delay="0">★ Medan · Sumatera Utara</div>
+      <h1 class="hero-title" data-aos="fade-up" data-delay="150">
+        <span class="hero-title-line">Kenyamanan</span>
+        <span class="hero-title-line italic">Tak Tertandingi</span>
+      </h1>
+      <p class="hero-sub" data-aos="fade-up" data-delay="300">
+        Rasakan pengalaman menginap premium di jantung kota Medan.<br />
+        Setiap detail dirancang untuk kepuasan Anda.
+      </p>
+      <div class="hero-actions" data-aos="fade-up" data-delay="450">
+        <a href="#booking" class="btn btn-primary">Pesan Kamar</a>
+        <a href="#about" class="btn btn-ghost">Jelajahi Hotel</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll-indicator" id="scrollIndicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+
+    <div class="hero-stats" data-aos="fade-up" data-delay="600">
+      <div class="stat-item">
+        <div class="stat-number" data-count="150">0</div>
+        <div class="stat-label">Kamar Tersedia</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="98">0</div>
+        <div class="stat-label">% Kepuasan Tamu</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="12">0</div>
+        <div class="stat-label">Tahun Pengalaman</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual" data-aos="fade-right">
+          <div class="about-img-wrap">
+            <!-- FOTO HOTEL: Ganti src dengan foto hotel Anda -->
+            <img src="src/hotel-room1.jpg" alt="favehotel Interior" class="about-img"
+                 onerror="this.src=''; this.parentElement.classList.add('img-placeholder');" />
+            <div class="about-img-accent"></div>
+          </div>
+          <div class="about-badge">
+            <span class="badge-year">Est.</span>
+            <span class="badge-num">2012</span>
+          </div>
+        </div>
+        <div class="about-text" data-aos="fade-left">
+          <div class="section-eyebrow">Tentang Kami</div>
+          <h2 class="section-title">Bukan Sekadar<br /><em>Tempat Menginap</em></h2>
+          <p class="about-desc">
+            favehotel S. Parman Medan hadir dengan filosofi sederhana: memberikan pengalaman terbaik 
+            kepada setiap tamu. Berlokasi strategis di Jalan S. Parman, kami menawarkan kemudahan 
+            akses ke pusat bisnis, perbelanjaan, dan wisata kuliner kota Medan.
+          </p>
+          <p class="about-desc">
+            Dengan tim yang berdedikasi dan fasilitas modern yang terus kami tingkatkan, 
+            setiap kunjungan Anda adalah prioritas utama kami.
+          </p>
+          <div class="about-features">
+            <div class="feature-chip">✦ Lokasi Strategis</div>
+            <div class="feature-chip">✦ WiFi Gratis</div>
+            <div class="feature-chip">✦ 24/7 Service</div>
+            <div class="feature-chip">✦ Parkir Luas</div>
+          </div>
+          <a href="#facilities" class="btn btn-primary" style="margin-top: 2rem;">Lihat Fasilitas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ROOMS ===== -->
+  <section class="rooms" id="rooms">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-eyebrow">Akomodasi</div>
+        <h2 class="section-title">Pilihan <em>Kamar Kami</em></h2>
+        <p class="section-sub">Setiap kamar dirancang untuk memberikan kenyamanan dan ketenangan maksimal</p>
+      </div>
+
+      <div class="rooms-grid">
+        <!-- ROOM 1 -->
+        <div class="room-card" data-aos="fade-up" data-delay="0">
+          <div class="room-img-wrap">
+            <!-- FOTO KAMAR: Ganti src dengan foto kamar Anda -->
+            <img src="src/standar-room.webp" alt="Standard Room"
+                 onerror="this.parentElement.classList.add('img-placeholder');" />
+            <div class="room-badge">Tersedia</div>
+          </div>
+          <div class="room-info">
+            <div class="room-type">Standard Room</div>
+            <h3 class="room-name">Kamar Standar</h3>
+            <p class="room-desc">Pilihan sempurna untuk perjalanan bisnis maupun liburan singkat.</p>
+            <ul class="room-amenities">
+              <li>🛏 King Size Bed</li>
+              <li>📺 Smart TV 40"</li>
+              <li>❄️ AC</li>
+              <li>🚿 Private Bathroom</li>
+            </ul>
+            <div class="room-footer">
+              <div class="room-price"><span>IDR 350.000</span> / malam</div>
+              <a href="#booking" class="btn btn-sm">Pesan</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROOM 2 -->
+        <div class="room-card featured" data-aos="fade-up" data-delay="150">
+          <div class="room-img-wrap">
+            <!-- FOTO KAMAR: Ganti src dengan foto kamar deluxe Anda -->
+            <img src="src/Deluxe-room.webp" alt="Deluxe Room"
+                 onerror="this.parentElement.classList.add('img-placeholder');" />
+            <div class="room-badge popular">Terpopuler</div>
+          </div>
+          <div class="room-info">
+            <div class="room-type">Deluxe Room</div>
+            <h3 class="room-name">Kamar Deluxe</h3>
+            <p class="room-desc">Ruang lebih luas dengan pemandangan kota yang menakjubkan.</p>
+            <ul class="room-amenities">
+              <li>🛏 Super King Bed</li>
+              <li>📺 Smart TV 50"</li>
+              <li>❄️ AC Dual Zone</li>
+              <li>🛁 Bathtub & Shower</li>
+            </ul>
+            <div class="room-footer">
+              <div class="room-price"><span>IDR 550.000</span> / malam</div>
+              <a href="#booking" class="btn btn-sm">Pesan</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROOM 3 -->
+        <div class="room-card" data-aos="fade-up" data-delay="300">
+          <div class="room-img-wrap">
+            <!-- FOTO KAMAR: Ganti src dengan foto kamar suite Anda -->
+            <img src="src/suite-room.jpg" alt="Suite Room"
+                 onerror="this.parentElement.classList.add('img-placeholder');" />
+            <div class="room-badge">Premium</div>
+          </div>
+          <div class="room-info">
+            <div class="room-type">Suite Room</div>
+            <h3 class="room-name">Kamar Suite</h3>
+            <p class="room-desc">Kemewahan tertinggi dengan ruang tamu terpisah dan fasilitas eksklusif.</p>
+            <ul class="room-amenities">
+              <li>🛏 Presidential Bed</li>
+              <li>📺 Smart TV 65"</li>
+              <li>🍽 Ruang Makan</li>
+              <li>🛁 Jacuzzi</li>
+            </ul>
+            <div class="room-footer">
+              <div class="room-price"><span>IDR 850.000</span> / malam</div>
+              <a href="#booking" class="btn btn-sm">Pesan</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FACILITIES ===== -->
+  <section class="facilities" id="facilities">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-eyebrow">Layanan & Fasilitas</div>
+        <h2 class="section-title">Semua yang Anda<br /><em>Butuhkan</em></h2>
+      </div>
+
+      <div class="facilities-grid">
+        <div class="facility-item" data-aos="fade-up" data-delay="0">
+          <div class="facility-icon">🍽</div>
+          <h4>Restoran & Café</h4>
+          <p>Nikmati hidangan khas Medan dan internasional di restoran kami yang nyaman.</p>
+        </div>
+        <div class="facility-item" data-aos="fade-up" data-delay="100">
+          <div class="facility-icon">🏊</div>
+          <h4>Kolam Renang</h4>
+          <p>Kolam renang outdoor yang menyegarkan, buka setiap hari pukul 06.00–22.00.</p>
+        </div>
+        <div class="facility-item" data-aos="fade-up" data-delay="200">
+          <div class="facility-icon">💪</div>
+          <h4>Pusat Kebugaran</h4>
+          <p>Peralatan modern untuk menjaga kebugaran Anda selama menginap.</p>
+        </div>
+        <div class="facility-item" data-aos="fade-up" data-delay="300">
+          <div class="facility-icon">🏢</div>
+          <h4>Ruang Pertemuan</h4>
+          <p>Fasilitas meeting profesional untuk kebutuhan bisnis dan seminar Anda.</p>
+        </div>
+        <div class="facility-item" data-aos="fade-up" data-delay="400">
+          <div class="facility-icon">🧖</div>
+          <h4>Spa & Relaksasi</h4>
+          <p>Rasakan perawatan tubuh dan relaksasi total oleh terapis profesional kami.</p>
+        </div>
+        <div class="facility-item" data-aos="fade-up" data-delay="500">
+          <div class="facility-icon">🚗</div>
+          <h4>Layanan Antar-Jemput</h4>
+          <p>Airport transfer dan city tour tersedia 24 jam untuk kenyamanan Anda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-eyebrow">Galeri</div>
+        <h2 class="section-title">Sekilas <em>Pandang</em></h2>
+      </div>
+    </div>
+
+    <div class="gallery-track" id="galleryTrack">
+      <!-- GALERI: Ganti src dengan foto-foto hotel Anda -->
+      <div class="gallery-item" data-index="0">
+        <img src="src/lobby-hotel.jpg" alt="Lobby Hotel" onerror="this.parentElement.classList.add('img-placeholder');" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-title">Lobby Utama</div>
+          <div class="gallery-overlay-desc">Sambutan hangat dimulai dari sini. Lobby luas kami dirancang memberi kesan pertama yang tak terlupakan.</div>
+        </div>
+      </div>
+      <div class="gallery-item" data-index="1">
+        <img src="src/restouran-room.webp" alt="Restaurant" onerror="this.parentElement.classList.add('img-placeholder');" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-title">Restoran</div>
+          <div class="gallery-overlay-desc">Nikmati sajian kuliner khas Medan dan menu internasional yang disiapkan oleh chef berpengalaman kami.</div>
+        </div>
+      </div>
+      <div class="gallery-item" data-index="2">
+        <img src="src/pool-room.jpg" alt="Swimming Pool" onerror="this.parentElement.classList.add('img-placeholder');" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-title">Kolam Renang</div>
+          <div class="gallery-overlay-desc">Kolam renang outdoor yang menyegarkan, terbuka setiap hari pukul 06.00–22.00 untuk seluruh tamu.</div>
+        </div>
+      </div>
+      <div class="gallery-item" data-index="3">
+        <img src="src/meeting-room.jpg" alt="Meeting Room" onerror="this.parentElement.classList.add('img-placeholder');" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-title">Ruang Meeting</div>
+          <div class="gallery-overlay-desc">Fasilitas ruang pertemuan modern kapasitas hingga 100 orang, lengkap dengan peralatan presentasi profesional.</div>
+        </div>
+      </div>
+      <div class="gallery-item" data-index="4">
+        <img src="src/kamarmandi-room.jpg" alt="Kamar Mandi Premium" onerror="this.parentElement.classList.add('img-placeholder');" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-title">Kamar Mandi Premium</div>
+          <div class="gallery-overlay-desc">Dilengkapi bathtub, shower rain, dan amenities eksklusif dari brand premium untuk kenyamanan optimal.</div>
+        </div>
+      </div>
+      <div class="gallery-item" data-index="5">
+        <img src="src/gym-room.jpg" alt="Gym" onerror="this.parentElement.classList.add('img-placeholder');" />
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-title">Pusat Kebugaran</div>
+          <div class="gallery-overlay-desc">Peralatan kardio & angkat beban terkini tersedia 24 jam khusus untuk tamu hotel kami.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-nav" data-aos="fade-up">
+      <button class="gallery-prev" id="galleryPrev" aria-label="Previous">←</button>
+      <div class="gallery-dots" id="galleryDots"></div>
+      <button class="gallery-next" id="galleryNext" aria-label="Next">→</button>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" id="lightboxClose">✕</button>
+      <button class="lightbox-prev" id="lightboxPrev">‹</button>
+      <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+      <button class="lightbox-next" id="lightboxNext">›</button>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-eyebrow">Ulasan Tamu</div>
+        <h2 class="section-title">Kata Mereka<br /><em>Tentang Kami</em></h2>
+      </div>
+
+      <div class="testi-slider" id="testiSlider">
+        <div class="testi-card active">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Pelayanannya luar biasa! Staf sangat ramah dan responsif. Kamarnya bersih dan nyaman. Saya pasti akan kembali lagi."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AR</div>
+            <div>
+              <div class="testi-name">Ahmad Rasyid</div>
+              <div class="testi-origin">Jakarta, Indonesia</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Lokasi sangat strategis, mudah akses ke mana-mana. Fasilitas lengkap dan modern. Breakfast-nya juga enak banget!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">SW</div>
+            <div>
+              <div class="testi-name">Siti Wulandari</div>
+              <div class="testi-origin">Surabaya, Indonesia</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★☆</div>
+          <p class="testi-text">"Harga sangat terjangkau untuk fasilitas sebagus ini. Kolam renangnya bersih, gym-nya lengkap. Highly recommended!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">BH</div>
+            <div>
+              <div class="testi-name">Budi Hartono</div>
+              <div class="testi-origin">Medan, Indonesia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-controls">
+        <button class="testi-prev" id="testiPrev">←</button>
+        <div class="testi-dots" id="testiDots"></div>
+        <button class="testi-next" id="testiNext">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOOKING ===== -->
+  <section class="booking" id="booking">
+    <div class="container">
+      <div class="booking-inner" data-aos="fade-up">
+        <div class="booking-text">
+          <div class="section-eyebrow light">Reservasi</div>
+          <h2 class="section-title light">Pesan Kamar<br /><em>Hari Ini</em></h2>
+          <p class="booking-desc">Dapatkan harga terbaik dengan memesan langsung melalui kami.</p>
+        </div>
+        <form class="booking-form" id="bookingForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nama Lengkap</label>
+              <input type="text" placeholder="Nama Anda" required />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="email@anda.com" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Check-in</label>
+              <input type="date" id="checkinDate" required />
+            </div>
+            <div class="form-group">
+              <label>Check-out</label>
+              <input type="date" id="checkoutDate" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Tipe Kamar</label>
+              <select>
+                <option value="">Pilih Kamar</option>
+                <option>Kamar Standar</option>
+                <option>Kamar Deluxe</option>
+                <option>Kamar Suite</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Jumlah Tamu</label>
+              <select>
+                <option>1 Orang</option>
+                <option>2 Orang</option>
+                <option>3 Orang</option>
+                <option>4+ Orang</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-white btn-full">Konfirmasi Reservasi</button>
+          <p class="form-note">* Kami akan menghubungi Anda dalam 1×24 jam</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-eyebrow">Hubungi Kami</div>
+        <h2 class="section-title">Kami Siap <em>Membantu</em></h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info" data-aos="fade-right">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <strong>Alamat</strong>
+              <p>Jl. S. Parman No. 99, Petisah Tengah,<br />Medan Petisah, Kota Medan,<br />Sumatera Utara 20112</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <strong>Telepon</strong>
+              <p>+62 61 XXXX XXXX</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <strong>Email</strong>
+              <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0f666169604f696e796a67607b6a63227c7f6e7d626e6122626a6b6e61216c6062">[email&#160;protected]</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">⏰</div>
+            <div>
+              <strong>Jam Operasional</strong>
+              <p>Front Desk: 24 Jam / 7 Hari</p>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-btn" aria-label="Instagram">IG</a>
+            <a href="#" class="social-btn" aria-label="Facebook">FB</a>
+            <a href="#" class="social-btn" aria-label="WhatsApp">WA</a>
+            <a href="#" class="social-btn" aria-label="TripAdvisor">TA</a>
+          </div>
+        </div>
+
+        <div class="contact-map" data-aos="fade-left">
+          <!-- MAP: Ganti src dengan embed Google Maps lokasi Anda -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.1!2d98.67!3d3.59!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zfavehotel+S.+Parman+Medan!5e0!3m2!1sid!2sid!4v1"
+            width="100%" height="350" style="border:0; border-radius: 12px;" allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="Lokasi favehotel S. Parman Medan">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-fave">fave</span><span class="logo-hotel">hotel</span>
+          </div>
+          <p class="footer-tagline">S. Parman · Medan</p>
+          <p class="footer-desc">Memberikan pengalaman menginap terbaik dengan pelayanan tulus dari hati.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Navigasi</h5>
+          <ul>
+            <li><a href="#about">Tentang Kami</a></li>
+            <li><a href="#rooms">Kamar</a></li>
+            <li><a href="#facilities">Fasilitas</a></li>
+            <li><a href="#gallery">Galeri</a></li>
+            <li><a href="#contact">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Layanan</h5>
+          <ul>
+            <li><a href="#">Reservasi Online</a></li>
+            <li><a href="#">Event & Pernikahan</a></li>
+            <li><a href="#">Paket Bisnis</a></li>
+            <li><a href="#">Airport Transfer</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h5>Newsletter</h5>
+          <p>Dapatkan penawaran eksklusif langsung ke inbox Anda.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Email Anda" />
+            <button class="btn btn-primary">→</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 favehotel S. Parman Medan. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Kebijakan Privasi</a>
+          <a href="#">Syarat & Ketentuan</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">↑</button>
+
+  <!-- ===== MIDTRANS PAYMENT MODAL ===== -->
+  <div class="payment-modal-backdrop" id="paymentModalBackdrop">
+    <div class="payment-modal" id="paymentModal" role="dialog" aria-modal="true" aria-labelledby="paymentModalTitle">
+
+      <div class="payment-modal-header">
+        <h3 id="paymentModalTitle">Konfirmasi & Pembayaran</h3>
+        <button class="payment-modal-close" id="paymentModalClose" aria-label="Tutup">✕</button>
+      </div>
+
+      <div class="payment-modal-body">
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+          <div class="order-summary-title">Ringkasan Pesanan</div>
+          <div class="order-row">
+            <span class="order-label">Tamu</span>
+            <span class="order-value" id="summaryGuest">—</span>
+          </div>
+          <div class="order-row">
+            <span class="order-label">Kamar</span>
+            <span class="order-value" id="summaryRoom">—</span>
+          </div>
+          <div class="order-row">
+            <span class="order-label">Check-in</span>
+            <span class="order-value" id="summaryCheckin">—</span>
+          </div>
+          <div class="order-row">
+            <span class="order-label">Check-out</span>
+            <span class="order-value" id="summaryCheckout">—</span>
+          </div>
+          <div class="order-row">
+            <span class="order-label">Durasi</span>
+            <span class="order-value" id="summaryNights">—</span>
+          </div>
+          <div class="order-row total">
+            <span class="order-label">Total</span>
+            <span class="order-value" id="summaryTotal">—</span>
+          </div>
+        </div>
+
+        <!-- Payment Method Selection -->
+        <div class="payment-methods-title">Pilih Metode Pembayaran</div>
+        <div class="payment-methods-grid">
+          <button class="payment-method-btn selected" data-method="snap" onclick="selectPaymentMethod(this)">
+            <div class="payment-method-icon">💳</div>
+            <div class="payment-method-name">Midtrans Snap</div>
+            <div class="payment-method-sub">Kartu, VA, e-Wallet</div>
+          </button>
+          <button class="payment-method-btn" data-method="gopay" onclick="selectPaymentMethod(this)">
+            <div class="payment-method-icon">🟢</div>
+            <div class="payment-method-name">GoPay</div>
+            <div class="payment-method-sub">via Midtrans</div>
+          </button>
+          <button class="payment-method-btn" data-method="bca_va" onclick="selectPaymentMethod(this)">
+            <div class="payment-method-icon">🏦</div>
+            <div class="payment-method-name">BCA Virtual Account</div>
+            <div class="payment-method-sub">Transfer Bank</div>
+          </button>
+          <button class="payment-method-btn" data-method="qris" onclick="selectPaymentMethod(this)">
+            <div class="payment-method-icon">📱</div>
+            <div class="payment-method-name">QRIS</div>
+            <div class="payment-method-sub">Scan & Pay</div>
+          </button>
+        </div>
+
+        <!-- Pay Button -->
+        <div class="pay-btn-wrap">
+          <button class="btn btn-primary btn-full" id="payNowBtn" onclick="processPayment()">
+            Bayar Sekarang
+          </button>
+        </div>
+
+        <!-- Payment Status -->
+        <div class="pay-status" id="payStatus"></div>
+
+        <!-- Midtrans Badge -->
+        <div class="midtrans-badge">
+          <span>Pembayaran aman diproses oleh</span>
+          <strong style="color: var(--blue-pale); margin-left:.3rem;">Midtrans</strong>
+        </div>
+        <div class="secure-badge">
+          🔒 SSL Encrypted · PCI-DSS Compliant · 3D Secure
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Midtrans Snap JS (Production) -->
+  <!-- PENTING: Ganti data-client-key dengan Client Key Midtrans Anda -->
+  <!-- Untuk sandbox: https://app.sandbox.midtrans.com/snap/snap.js -->
+  <!-- Untuk production: https://app.midtrans.com/snap/snap.js -->
+  <script
+    src="https://app.sandbox.midtrans.com/snap/snap.js"
+    data-client-key="YOUR_MIDTRANS_CLIENT_KEY">
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
